@@ -8,8 +8,9 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- HSQL => bean 으로 등록 -->
 	<jdbc:embedded-database id="dataSource" type="HSQL">
-		<jdbc:script location = "classpath:BoardSchema.sql" />
-		<jdbc:script location = "classpath:BoardData.sql" />
+		<jdbc:script location = "classpath:/**/BoardSchema.sql" />
+		<jdbc:script location = "classpath:/**/BoardData.sql" />
 	</jdbc:embedded-database>	
+	
 	
 </beans>
