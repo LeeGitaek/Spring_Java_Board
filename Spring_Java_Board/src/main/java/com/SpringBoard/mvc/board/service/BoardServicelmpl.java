@@ -1,14 +1,14 @@
 package com.SpringBoard.mvc.board.service;
 
 import java.util.List;
-import javax.annoation.Resource;
+//import javax.annotation.*;
 import org.springframework.stereotype.Service;
 import com.SpringBoard.mvc.board.dao.BoardDao;
 import com.SpringBoard.mvc.board.domain.BoardVO;
 
 @Service
 public class BoardServicelmpl implements BoardService {
-	@Resource
+	//@Resource
 	private BoardDao boardDao;
 	
 	public BoardDao getBoardDao() {
