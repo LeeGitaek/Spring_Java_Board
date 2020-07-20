@@ -27,5 +27,10 @@ public class BoardController {
 		return "/board/read";
 	}
 	
+	@RequestMapping(value="/board/write")
+	public String write() {
+		return "/board/write";
+	}
+	
 	
 }
