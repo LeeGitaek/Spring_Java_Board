@@ -12,5 +12,18 @@
 		<jdbc:script location = "classpath:/**/BoardData.sql" />
 	</jdbc:embedded-database>	
 	
+	<!-- sqlSessionFactory 와 sqlSessionTemplate 을 스프링 빈으로 등록한다. -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/**/sqlmap/config/mybatis-config.xml" />
+		<property name="mapperLocations" >
+			<list>
+				<value>classpath:/**/sqlmap/sqlmap-board.xml</value>
+			</list>
+		</property>	
+	</bean>
 	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
 </beans>
