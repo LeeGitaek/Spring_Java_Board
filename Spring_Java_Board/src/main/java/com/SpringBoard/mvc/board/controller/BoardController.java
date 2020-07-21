@@ -55,6 +55,7 @@ public class BoardController {
 		{
 			boardService.write(boardVO);
 			return "redirect:/board/list";
+			// PRG 패턴을 적용 
 		}
 	}
 	
