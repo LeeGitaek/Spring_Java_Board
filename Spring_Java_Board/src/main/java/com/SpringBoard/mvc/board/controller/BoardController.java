@@ -49,6 +49,7 @@ public class BoardController {
 		if(bindingResult.hasErrors()) 
 		{
 			return "/board/write";
+			// k
 		}
 		else 
 		{
