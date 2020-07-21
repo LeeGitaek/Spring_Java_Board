@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.SpringBoard.mvc.board.domain.BoardVO;
 import com.SpringBoard.mvc.board.service.BoardService;
 
 @Controller
@@ -31,6 +32,12 @@ public class BoardController {
 	@RequestMapping(value="/board/write", method=RequestMethod.GET)
 	public String write() {
 		return "/board/write";
+	}
+	
+	@RequestMapping(value="/board/write",method=RequestMethod.POST)
+	public String write(BoardVO boardVO) {
+		boardService.write(boardVO);
+		return "redirect:/board/list";
 	}
 	
 	
