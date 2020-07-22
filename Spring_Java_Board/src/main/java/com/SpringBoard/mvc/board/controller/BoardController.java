@@ -71,8 +71,8 @@ public class BoardController {
 		//model.addAttribute("boardVO",boardVO);
 		return "/board/edit";
 	}
-	
-	@RequestMapping(value="/board/edit/{seq}",method=RequestMethod.GET)
+
+	@RequestMapping(value="/board/edit",method=RequestMethod.POST)
 	public String edit(@Valid BoardVO boardVO, BindingResult result , int pwd,SessionStatus sessionStatus, Model model) {
 		if(result.hasErrors()) 
 		{
