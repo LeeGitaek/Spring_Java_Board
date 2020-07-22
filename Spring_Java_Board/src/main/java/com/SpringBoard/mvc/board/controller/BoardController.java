@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,7 +49,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/write",method=RequestMethod.POST)
-	public String write(@Valid BoardVO boardVO, BindingResult bindingResult) {
+	public String write(@Valid BoardVO boardVO, BindingResult bindingResult,SessionStatus sessionStatus) {
 		if(bindingResult.hasErrors()) 
 		{
 			return "/board/write";
@@ -57,15 +58,17 @@ public class BoardController {
 		else 
 		{
 			boardService.write(boardVO);
+			sessionStatus.setComplete();
 			return "redirect:/board/list";
 			// PRG 패턴을 적용 
 		}
 	}
 	
 	@RequestMapping(value="/board/edit/{seq}", method=RequestMethod.GET)
-	public String edit(@PathVariable int seq, Model model) {
-		BoardVO boardVO = boardService.read(seq);
-		model.addAttribute("boardVO",boardVO);
+	public String edit(@ModelAttribute BoardVO boardVO) {
+		//@PathVariable int seq, Model model
+		//BoardVO boardVO = boardService.read(seq);
+		//model.addAttribute("boardVO",boardVO);
 		return "/board/edit";
 	}
 	
